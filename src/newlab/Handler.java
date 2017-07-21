@@ -1,27 +1,25 @@
 package newlab;
 
+import newlab.concurrency.ee7.ConcurrencyHandler;
+
 import javax.annotation.PostConstruct;
-import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
-import javax.inject.Named;
+import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.UUID;
 
 @SessionScoped
 @ManagedBean
-//@Named
-//@Stateful
-
-//@SessionScoped
 
 public class Handler implements Serializable {
-    private String result = "result undefine";
+    private String result = "result\nundefine";
     private String value = "undefine";
 
     private UUID uuid = UUID.randomUUID();
+
+    @Inject
+    ConcurrencyHandler handler;
 
     @PostConstruct
     public void init() {
@@ -30,7 +28,8 @@ public class Handler implements Serializable {
 
     public String apply(){
         this.value =  "My name is Name bean";
-        this.result =  "Simple result \n Line 2";
+        //this.result =  "Simple result\nLine 2";
+        this.result = handler.apply();
         //return "name.xhtml";
         return null;
     }
@@ -48,7 +47,7 @@ public class Handler implements Serializable {
     }
 
     public void setResult(String value) {
-        this.result = result;
+        this.result = value;
     }
 
     public UUID getUuid() {
