@@ -16,7 +16,7 @@ public class SimpleBean {
         res += "Start = " + new java.util.Date().toString() +"; ";
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
             res += "Stop = " + new java.util.Date().toString()  +"; Msg = " + val +"; ";
         } catch (Exception e) {
             res += "Interrupt = " + new java.util.Date().toString()  +"; Msg = " + e.toString() +"; ";
