@@ -7,10 +7,12 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
+import java.util.function.Supplier;
 
 @Stateless
 
-public class ConcurrencyHandler {
+public class ConcurrencyHandler //implements Supplier<String>
+{
 
     @Resource(name = "DefaultManagedExecutorService")
     ManagedExecutorService executor;
@@ -18,7 +20,7 @@ public class ConcurrencyHandler {
     @Inject
     SimpleBean simpleBean;
 
-    public String apply() {
+    public String get() {
         String res = "ConcurrencyHandler...\n";
 
         res += "Start non-concurrency bean...\n";

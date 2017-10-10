@@ -4,34 +4,24 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-//import javax.enterprise.
+import java.util.function.Supplier;
 
-/**
- * Created by Radoselskiy on 07.08.2017.
- */
+
 @Stateless
+public class CDIHandler //implements Supplier<String>
+{
 
-@Startup
-
-public class CDIHandler {
-
+    private String r = "Not initialized";
     //@Inject Insta
 
-    @Inject BeanAA aa;
+    @Inject @A InterfaceA interfaceA;
 
     @PostConstruct
     private void init() {
-
-
+        r = "interfaceA = " + interfaceA.toString() + "; ";
     }
 
     public String get() {
-        String r = "";
-
-        r += "aa = " + aa.toString() + "; ";
-
-
         return r;
-
     }
 }
