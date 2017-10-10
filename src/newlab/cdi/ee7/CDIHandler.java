@@ -1,5 +1,7 @@
 package newlab.cdi.ee7;
 
+import newlab.TestHandler;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
@@ -8,7 +10,8 @@ import java.util.function.Supplier;
 
 
 @Stateless
-public class CDIHandler //implements Supplier<String>
+
+public class CDIHandler //implements TestHandler
 {
 
     private String r = "Not initialized";
